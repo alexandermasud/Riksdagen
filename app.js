@@ -26,7 +26,9 @@ var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
 // Mongoose connect google
-mongoose.connect(googleKeys.mongoURI, {
+
+var mongoURI = 'mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp';
+mongoose.connect(mongoURI, {
     useMongoClient:true
 })
 

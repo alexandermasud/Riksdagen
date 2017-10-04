@@ -7,11 +7,9 @@ const Schema = mongoose.Schema;
 const GoogleUserSchema = new Schema({
   username:{
     type:String,
-    required: true
   },
   email:{
     type: String,
-    required: true
   },
   firstname: {
     type: String
@@ -51,7 +49,7 @@ const FacebookUserSchema = new Schema({
 });
 
 // Create collection and add schema
-mongoose.model('usersf', FacebookUserSchema);
+mongoose.model('facebookUsers', FacebookUserSchema);
 
 
 
