@@ -5,7 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 var bcrypt = require('bcryptjs');
 
-var {ensureAuthenticated} = require('../helpers/auth');
+var {ensureAuthenticated} = require('../helpers/blockNoneAuth');
 
 
 router.get('/register', function(req, res) {
@@ -62,7 +62,7 @@ router.post('/register', function(req, res){
             return;
           } else {
             req.flash('success','You are now registered and can log in');
-            res.redirect('/users/login');
+            res.redirect('/login');
           }
         });
       });

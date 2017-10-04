@@ -12,11 +12,6 @@ var methodOverride = require('method-override');
 
 
 
-// Load keys
-
-var googleKeys = require('./config/googleKeys');
-var facebookKeys = require('./config/facebookKeys');
-
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var db = mongoose.connection;
@@ -27,8 +22,8 @@ mongoose.Promise = global.Promise;
 
 // Mongoose connect google
 
-var mongoURI = 'mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp';
-mongoose.connect(mongoURI, {
+
+mongoose.connect('mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp', {
     useMongoClient:true
 })
 

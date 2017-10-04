@@ -8,3 +8,7 @@ module.exports = {
     }
     
 }
+
+// var {ensureAuthenticated} = require('../helpers/blockNoneAuth');
+
+// Blockerar användare från att ansluta till sidor om de ej är inloggade
