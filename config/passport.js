@@ -1,17 +1,17 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
-const keys = require('./keys');
+const googleKeys = require('./googleKeys');
 // Load user model
 const User = mongoose.model('users');
 
-var configAuth = ('./auth');
+var facebookKeys = require('./facebookKeys');
 
 module.exports = function(passport){
   passport.use(
     new GoogleStrategy({
-      clientID: keys.googleClientID,
-      clientSecret:keys.googleClientSecret,
+      clientID: googleKeys.googleClientID,
+      clientSecret:googleKeys.googleClientSecret,
       callbackURL:'/auth/google/callback',
       proxy: true
     }, (accessToken, refreshToken, profile, done) => {
@@ -54,6 +54,26 @@ module.exports = function(passport){
   passport.deserializeUser((id, done) => {
     User.findById(id).then(user => done(null, user));
   });
+    
+    
+    
+    
+    
+    passport.use(new FacebookStrategy({
+    clientID: facebookKeys.clientID
+    clientSecret: facebookKeys.clientSecret,
+    callbackURL: facebookKeys.callbackURL
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate(..., function(err, user) {
+      if (err) { return done(err); }
+      done(null, user);
+    });
+  }
+));
+    
+    
+    
 }
 
 

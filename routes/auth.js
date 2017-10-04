@@ -10,6 +10,16 @@ router.get('/google/callback',
     res.redirect('/');
   });
 
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/success',
+                                      failureRedirect: '/fail' }));
+
+
+
 router.get('/verify', (req, res) => {
   if(req.user){
     console.log(req.user);
