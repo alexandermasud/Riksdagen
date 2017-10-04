@@ -25,7 +25,7 @@ var db = mongoose.connection;
 
 mongoose.Promise = global.Promise;
 
-// Mongoose connect
+// Mongoose connect google
 mongoose.connect(googleKeys.mongoURI, {
     useMongoClient:true
 })

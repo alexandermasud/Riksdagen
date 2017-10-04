@@ -28,7 +28,7 @@ const GoogleUserSchema = new Schema({
 mongoose.model('users', GoogleUserSchema);
 
 // Create Shema
-const facebookUserSchema = new Schema({
+const FacebookUserSchema = new Schema({
   id:{
     type:String,
    
@@ -51,7 +51,7 @@ const facebookUserSchema = new Schema({
 });
 
 // Create collection and add schema
-mongoose.model('users', GoogleUserSchema);
+mongoose.model('usersf', FacebookUserSchema);
 
 
 

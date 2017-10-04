@@ -65,7 +65,7 @@ module.exports = function(passport){
     callbackURL: facebookKeys.callbackURL
   },
   function(accessToken, refreshToken, profile, done) {
-        process.NexTick, function(){
+        process.NexTick, (function(){
             User.findOne({'facebook.id':profile.id}, function (err,user){
               
                 if (err){
@@ -88,24 +88,24 @@ module.exports = function(passport){
                     
                     newUser.save(function(){
                         
-                        if (err){
+                        if (err)
                             throw err;
                             return done( null, newUser);
-                        }
-                        
+
                     })
                     
                     
                 }
-            })
+            });
             
-        }
+        
     });
   }
-));
+)); 
+    
+    
     
     
     
 }
-
 
