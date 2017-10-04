@@ -14,7 +14,8 @@ var methodOverride = require('method-override');
 
 // Load keys
 
-var keys = require('./config/keys');
+var googleKeys = require('./config/googleKeys');
+var facebookKeys = require('./config/facebookKeys');
 
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
@@ -25,7 +26,7 @@ var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
 // Mongoose connect
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(googleKeys.mongoURI, {
     useMongoClient:true
 })
 

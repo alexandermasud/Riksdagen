@@ -27,6 +27,33 @@ const GoogleUserSchema = new Schema({
 // Create collection and add schema
 mongoose.model('users', GoogleUserSchema);
 
+// Create Shema
+const facebookUserSchema = new Schema({
+  id:{
+    type:String,
+   
+  },
+    token:{
+    type:String,
+   
+  },
+  email:{
+    type: String,
+    
+  },
+  firstname: {
+    type: String
+  },
+  lastname: {
+    type: String
+  }
+
+});
+
+// Create collection and add schema
+mongoose.model('users', GoogleUserSchema);
+
+
 
 var UserSchema = mongoose.Schema({
 	username: {

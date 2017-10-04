@@ -60,14 +60,46 @@ module.exports = function(passport){
     
     
     passport.use(new FacebookStrategy({
-    clientID: facebookKeys.clientID
+    clientID: facebookKeys.clientID,
     clientSecret: facebookKeys.clientSecret,
     callbackURL: facebookKeys.callbackURL
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate(..., function(err, user) {
-      if (err) { return done(err); }
-      done(null, user);
+        process.NexTick, function(){
+            User.findOne({'facebook.id':profile.id}, function (err,user){
+              
+                if (err){
+                    
+                    return done(err);
+                }
+                if (user){
+                    
+                    return done(null, user);
+                }
+                
+                else{
+                    
+                    var newUser = new User ();
+                    NewUser.facebook.id = profile.id;
+                    NewUser.facebook.token = profile.accessToken;
+                    NewUser.facebook.firstname = profile.name.givenName;
+                    NewUser.facebook.lastname = profile.name.familyName;
+                    NewUser.facebook.email = profile.emails[0].value;
+                    
+                    newUser.save(function(){
+                        
+                        if (err){
+                            throw err;
+                            return done( null, newUser);
+                        }
+                        
+                    })
+                    
+                    
+                }
+            })
+            
+        }
     });
   }
 ));
