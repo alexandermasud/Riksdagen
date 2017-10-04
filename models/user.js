@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 // Create Shema
 const GoogleUserSchema = new Schema({
-  googleID:{
+  username:{
     type:String,
     required: true
   },

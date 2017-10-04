@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
+var bcrypt = require('bcryptjs');
 
 var {ensureAuthenticated} = require('../helpers/auth');
 
@@ -17,13 +18,58 @@ router.get('/login', function(req, res) {
 	res.render('login');
 });
 
+// Register Proccess
+router.post('/register', function(req, res){
+  const firstname = req.body.firstname;
+  const firstlast = req.body.lastname;
+  const email = req.body.email;
+  const username = req.body.username;
+  const password = req.body.password;
+  const password2 = req.body.password2;
 
+  req.checkBody('firstname', 'Name is required').notEmpty();
+  req.checkBody('lastname', 'Name is required').notEmpty();
+  req.checkBody('email', 'Email is required').notEmpty();
+  req.checkBody('email', 'Email is not valid').isEmail();
+  req.checkBody('username', 'Username is required').notEmpty();
+  req.checkBody('password', 'Password is required').notEmpty();
+  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-router.post('/register', function(req, res) {
-    
-    
+  let errors = req.validationErrors();
 
+  if(errors){
+    res.render('register', {
+      errors:errors
+    });
+  } else {
+    let newUser = new User({
+      firstname:firstname,
+      lastname:firstname,
+      email:email,
+      username:username,
+      password:password
+    });
+
+    bcrypt.genSalt(10, function(err, salt){
+      bcrypt.hash(newUser.password, salt, function(err, hash){
+        if(err){
+          console.log(err);
+        }
+        newUser.password = hash;
+        newUser.save(function(err){
+          if(err){
+            console.log(err);
+            return;
+          } else {
+            req.flash('success','You are now registered and can log in');
+            res.redirect('/users/login');
+          }
+        });
+      });
+    });
+  }
 });
+
 
 
 passport.use(new LocalStrategy(function(username, password, done) {
