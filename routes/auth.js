@@ -5,8 +5,10 @@ const passport = require('passport');
 
 router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
-router.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/' }),(req, res) => {
+router.get('/google/callback', passport.authenticate('google',
+                                                     
+                                                     
+    { failureRedirect: '/' }),(req, res) => {
     req.flash('success_msg', 'Inloggad!');
     res.redirect('/');
   });
@@ -15,19 +17,21 @@ router.get('/google/callback',
 router.get('/facebook', passport.authenticate('facebook', {scope:['email']}));
 
 
-router.get('/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/' }));
+router.get('/facebook/callback', passport.authenticate('facebook',
+                                                       
+    { failureRedirect: '/' }),(req, res) => {
+    req.flash('success_msg', 'Inloggad!');
+    res.redirect('/');
+  });
 
 router.get('/twitter', passport.authenticate('twitter'));
 
 
-router.get('/twitter/callback', passport.authenticate('twitter', 
-                                   { successRedirect: '/',
-                                     failureRedirect: '/' }));
-
-
-
+router.get('/twitter/callback', passport.authenticate('twitter',
+        { failureRedirect: '/' }),(req, res) => {
+        req.flash('success_msg', 'Inloggad!');
+        res.redirect('/');
+  });
 
 router.get('/verify', (req, res) => {
   if(req.user){
