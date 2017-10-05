@@ -19,6 +19,14 @@ router.get('/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/',
                                       failureRedirect: '/' }));
 
+router.get('/twitter', passport.authenticate('twitter'));
+
+
+router.get('/twitter/callback', passport.authenticate('twitter', 
+                                   { successRedirect: '/',
+                                     failureRedirect: '/' }));
+
+
 
 
 router.get('/verify', (req, res) => {

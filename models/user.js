@@ -51,6 +51,29 @@ const FacebookUserSchema = new Schema({
 // Create collection and add schema
 mongoose.model('facebookUsers', FacebookUserSchema);
 
+// Create Shema
+const TwitterUserSchema = new Schema({
+  username:{
+    type:String,
+  },
+   email:{
+    type:String,
+  },
+  firstname: {
+    type: String
+  },
+  lastname: {
+    type: String
+  },
+  image: {
+    type:String
+  }
+});
+
+// Create collection and add schema
+mongoose.model('twitterUsers', TwitterUserSchema);
+
+
 
 
 var UserSchema = mongoose.Schema({
