@@ -1,0 +1,33 @@
+
+    <p>INDEX</p>
+
+    
+    {{#if user}}
+
+        
+      <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                      <th>Ålder</th>
+                      <th>Förnamn</th>
+                      <th>Efternamn</th>
+                </tr>
+            </thead>
+            {{#politicians}}
+            <tbody>
+                <tr>
+                    <td>{{fodd_ar}}</td>
+                    <td>{{tilltalsnamn}}</td>
+                    <td>{{efternamn}}</td>
+                    
+                </tr>
+            </tbody>
+            {{/politicians}}
+        </table>
+    </div>
+        
+       {{else}}{{/if}}
+       
+      
+ 

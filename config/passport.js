@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 
 // Load user model
 const User = mongoose.model('users');
-
 const googleKeys = require('./googleKeys');
 const facebookKeys = require('./facebookKeys');
 const twitterKeys = require('./twitterKeys');
