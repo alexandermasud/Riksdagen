@@ -1,34 +1,49 @@
-
-    <p>INDEX</p>
-
+<div class="row ml-5">
+ 
+        <form action="/search" method="post">
+            <div class="row">
+                <div class="col-lg-2">
+                    <input class="form-control" name="fornamn" placeholder="Förnamn" type="text">
+                </div>
+                <div class="col-lg-2">
+                    <input class="form-control" name="efternamn" placeholder="Efternamn" type="text">
+                </div>
+                 <div class="col-lg-2">
+                    <input class="form-control" name="parti" placeholder="Parti" type="text">
+                </div>
+                <div class="col-lg-2">
+                    <a class="btn btn-outline-secondary btn-block" href="/api">Nollställ</a>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn btn-outline-success btn-block" type="submit">Sök</button>
+                </div>
+            </div>
+        </form>
     
-    {{#if user}}
-
-        
-      <div class="row">
-        <table class="table">
+     </div> 
+  <div class="row ml-5">
+        <table class="table tablesorter" id="myTable">
             <thead>
                 <tr>
-                      <th>Ålder</th>
+                      
                       <th>Förnamn</th>
                       <th>Efternamn</th>
+                      <th>Valkrets</th>
+                      <th>Parti</th>
                 </tr>
             </thead>
-            {{#politicians}}
+            {{#politiker}}
             <tbody>
                 <tr>
-                    <td>{{fodd_ar}}</td>
+                    <input type="text" value="{{intressent_id}}" readonly hidden>
                     <td>{{tilltalsnamn}}</td>
                     <td>{{efternamn}}</td>
-                    <td><img src="{{bild_url_80}}" alt=""></td>
+                    <td>{{valkrets}}</td>
+                    <td>{{parti}}</td>
+                    <td><img src="{{bild_url_80}}" alt="Porträtt på riksdagsledamoten {{tilltalsnamn}} {{efternamn}}"></td>
                     
                 </tr>
             </tbody>
-            {{/politicians}}
+            {{/politiker}}
         </table>
     </div>
-        
-       {{else}}{{/if}}
-       
-      
- 

@@ -34,6 +34,8 @@ mongoose.connect('mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp', {
 var routes = require('./routes/index');
 var api = require('./routes/api');
 
+var search = require('./routes/index');
+
 var account = require('./routes/account');
 var users = require('./routes/users');
 
@@ -115,6 +117,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', routes);
+app.post('/search', search)
 app.get('/api', api);
 
 app.post('/account', account);

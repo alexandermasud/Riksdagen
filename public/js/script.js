@@ -1,7 +1,5 @@
-$(document).ready(function() {
-    
-  
-    console.log('Javascript fungerar')
-
-});
-
+$(document).ready(function() 
+    { 
+        $("#myTable").tablesorter(); 
+    } 
+); 
