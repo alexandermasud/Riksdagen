@@ -32,7 +32,9 @@ mongoose.connect('mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp', {
 
 
 var routes = require('./routes/index');
-var api = require('./routes/api');
+
+
+var politicians = require('./routes/politicians')
 
 var search = require('./routes/index');
 
@@ -118,7 +120,10 @@ app.use(function(req, res, next) {
 
 app.get('/', routes);
 app.post('/search', search)
-app.get('/api', api);
+
+
+
+app.get('/politicians/:id', politicians)
 
 app.post('/account', account);
 app.use('/users', users);

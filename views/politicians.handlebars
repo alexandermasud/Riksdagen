@@ -1,0 +1,28 @@
+  <div class="row ml-5">
+        <table class="table tablesorter" id="myTable">
+            <thead>
+                <tr>
+                      
+                      <th>Förnamn</th>
+                      <th>Efternamn</th>
+                      <th>Valkrets</th>
+                      <th>Parti</th>
+                </tr>
+            </thead>
+            {{#politiker}}
+            <tbody>
+                <tr>
+                    <input type="text" value="{{intressent_id}}" readonly hidden>
+                    <td>{{tilltalsnamn}}</td>
+                    <td>{{efternamn}}</td>
+                    <td>{{valkrets}}</td>
+                    <td>{{parti}}</td>
+                    <td><img src="{{bild_url_192}}" alt="Porträtt på riksdagsledamoten {{tilltalsnamn}} {{efternamn}}"></td>
+                    
+                  
+                    
+                </tr>
+            </tbody>
+            {{/politiker}}
+        </table>
+    </div>
