@@ -1,38 +1,69 @@
-        <div class="row">
-        <div class="col-lg-3"></div>
-        <h2 class="page-header mt-2">Login</h2>
-        <div class="col-lg-3"></div>
+<div class="container">
+   
+<h2>Logga in</h2>
+   <div class="row center-align">
+   
+    <form action="/users/login" method="post">
+      <div class="row ">
+       
+        <div class="input-field  col s6">
+          <input name="username" placeholder="Användarnamn" required="" type="text" class="validate">
+          <label>Användarnamn</label>
         </div>
-        <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
-                <form action="/users/login" method="post">
-                    <div class="form-group">
-                        <label>Användarnamn</label> <input class="form-control" name="username" placeholder="Användarnamn" required="" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>Lösenord</label> <input class="form-control" name="password" placeholder="Lösenord" required="" type="password">
-                    </div><button class="btn btn-default float-right" type="submit">Skicka</button>
-                </form>
-            </div>
-            <div class="col-lg-3"></div>
+        <div class="input-field col s6">
+          <input name="password" placeholder="Lösenord" required="" type="password" class="validate"> 
+          <label>Lösenord</label>
         </div>
+     
+      </div>
+      
+   <div class="row right-align">
+     <button class="btn waves-effect waves-light" type="submit" name="action">Skicka
+    <i class="material-icons right">send</i>
+  </button>
+    
+       
+       </div>
+    </form>
+  </div>
+      
+       
+       <div class="row center-align">
+    
         
-        <div class="row mt-3">
-        <div class="col-lg-4"></div>
+         <a class="waves-effect waves-light btn red darken-1" href="/auth/google"> Logga in med Google</a>
+         
         
-        <div class="col-lg-4">
+         
+      
+         
+         
+         </div>
+         
+ <div class="row center-align">
+     
         
-              <a class="btn btn-danger btn-block" href="/auth/google"><i class="fa fa-google" aria-hidden="true"></i> Logga in med Google</a>
-              <a class="btn btn-primary btn-block" href="/auth/facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i> Logga in med Facebook</a>
-              <a class="btn btn-info btn-block" href="/auth/twitter"><i class="fa fa-twitter" aria-hidden="true"></i> Logga in med Twitter</a>
-        
-        </div>
-        
-        <div class="col-lg-4"></div>
-        
-        
-        
-        
-        </div>
-  
+         <a class="waves-effect waves-light btn  blue darken-3" href="/auth/facebook"> Logga in med Facebook</a>
+         
+       
+         
+         
+         
+         
+         </div>
+         
+         
+          <div class="row center-align">
+       
+     
+         <a class="waves-effect waves-light btn light-blue" href="/auth/twitter"> Logga in med Twitter</a>
+         
+     
+         
+       
+         
+         
+         </div>
+
+
+</div>

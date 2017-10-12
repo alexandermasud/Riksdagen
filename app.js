@@ -36,7 +36,7 @@ var routes = require('./routes/index');
 
 var politicians = require('./routes/politicians')
 
-var search = require('./routes/index');
+var search = require('./routes/politicians');
 
 var account = require('./routes/account');
 var users = require('./routes/users');
@@ -121,11 +121,11 @@ app.use(function(req, res, next) {
 app.get('/', routes);
 app.post('/search', search)
 
-
+app.get('/politicians', politicians)
 
 app.get('/politicians/:id', politicians)
 
-app.post('/account', account);
+app.get('/account', account);
 app.use('/users', users);
 app.get('/register', users);
 app.get('/login', users);

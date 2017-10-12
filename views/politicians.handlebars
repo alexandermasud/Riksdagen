@@ -1,28 +1,54 @@
-  <div class="row ml-5">
-        <table class="table tablesorter" id="myTable">
-            <thead>
-                <tr>
-                      
-                      <th>Förnamn</th>
-                      <th>Efternamn</th>
-                      <th>Valkrets</th>
-                      <th>Parti</th>
-                </tr>
-            </thead>
-            {{#politiker}}
-            <tbody>
-                <tr>
-                    <input type="text" value="{{intressent_id}}" readonly hidden>
-                    <td>{{tilltalsnamn}}</td>
-                    <td>{{efternamn}}</td>
-                    <td>{{valkrets}}</td>
-                    <td>{{parti}}</td>
-                    <td><img src="{{bild_url_192}}" alt="Porträtt på riksdagsledamoten {{tilltalsnamn}} {{efternamn}}"></td>
-                    
-                  
-                    
-                </tr>
-            </tbody>
-            {{/politiker}}
-        </table>
-    </div>
+
+           <div class="container">
+
+           
+           
+          
+        <form action="/search" method="post">
+            <div class="row">
+               
+                    <input class="form-control" name="fornamn" placeholder="Förnamn" type="text">
+            
+            
+                    <input class="form-control" name="efternamn" placeholder="Efternamn" type="text">
+          
+
+                    <input class="form-control" name="parti" placeholder="Parti" type="text">
+          
+       
+                    <button class="btn btn-outline-success btn-block" type="submit">Sök</button>
+         
+            </div>
+        </form>
+        <div class="col-lg-2"></div>
+    
+   
+
+           
+           {{#politiker}}
+           
+        <div class="row">
+        <div class="col s12">
+          <div class="card horizontal z-depth-3">
+         
+           
+            <div class="card-image">
+              <img src="{{bild_url_80}}" alt="Porträtt på riksdagsledamoten {{tilltalsnamn}} {{efternamn}}">
+            </div>
+            <span class="card-title"><h4>{{tilltalsnamn}} {{efternamn}}</h4></span>
+            <div class="card-content">
+              <p>{{valkrets}} {{parti}}</p>
+              <a href="/politicians/{{intressent_id}}" class="btn btn-default" type="submit">Mer info</a>
+            </div>
+            
+           
+           
+            
+        
+          </div>
+        </div>
+      </div>
+{{/politiker}}
+  
+    </div> 
+   
