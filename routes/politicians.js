@@ -1,7 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+let User = require('../models/user');
 
+
+var Twitter = require('twitter');
+
+var client = new Twitter({
+  consumer_key: '86VarYRKxkosjvIInJGt4DVsq',
+  consumer_secret: 'f9BBJlKmxPaBBv0wKDSkgypFLRPNVgbsINcWObmCaE0MZUcadE',
+  access_token_key: '893528727837188098-hiq38qi5OaW76wjAA1oNtLAKqLqUb4T',
+  access_token_secret: 'WkNo6oUrybHzPfBPHLwnqcXQR6E8ezzyIptqWH1kmlmQf'
+});
 
 router.get('/politicians', function(req, res) {
     
@@ -86,19 +96,37 @@ request({
 }, function (error, response, body) {
 
     if (!error && response.statusCode === 200) {
-
-
+        
+    
+        
+     var tilltalsnamn = body.personlista.person.tilltalsnamn
+     var efternamn = body.personlista.person.efternamn
+     
+   
             
     var politiker = body.personlista.person;
 
         
-    res.render('politicians', {politiker});
+           client.get('search/tweets', {q: ((tilltalsnamn) + ' ' + (efternamn))}, function(error, tweets, response) {
+           var tweets = (tweets.statuses);
+               
+               
+               
+               
+            res.render('politician', {politiker, tweets});
+               
+        });
+        
+    
        
     }
     
 })
     
 });
+
+
+
 
 
 module.exports = router;

@@ -2,28 +2,11 @@
            <div class="container">
 
            
-           
-          
-        <form action="/search" method="post">
-            <div class="row">
-               
-                    <input class="form-control" name="fornamn" placeholder="Förnamn" type="text">
-            
-            
-                    <input class="form-control" name="efternamn" placeholder="Efternamn" type="text">
-          
-
-                    <input class="form-control" name="parti" placeholder="Parti" type="text">
-          
-       
-                    <button class="btn btn-outline-success btn-block" type="submit">Sök</button>
-         
-            </div>
-        </form>
+   
         <div class="col-lg-2"></div>
     
    
-
+<p>ENPOLITIKER</p>
            
    {{#politiker}}
            
@@ -40,7 +23,7 @@
             <span class="card-title"><h4>{{tilltalsnamn}} {{efternamn}}</h4></span>
             <div class="card-content">
               <p>{{valkrets}} {{parti}}</p>
-              <a href="/politicians/{{intressent_id}}" class="btn btn-default" type="submit">Mer info</a>
+              <a href="/politician/{{intressent_id}}" class="btn btn-default" type="submit">Mer info</a>
             </div>
             
            
@@ -55,6 +38,25 @@
       
 
         {{/politiker}}
+        
+        {{#tweets}}
+        
+         <div class="card horizontal z-depth-3">
+         
+           
+           
+            
+            <div class="card-content">
+              <p> {{text}}</p>
+              
+            </div>
+
+        
+          </div>
+        
+       
+        
+        {{/tweets}}
 
   
     </div> 
