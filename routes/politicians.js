@@ -4,6 +4,23 @@ var request = require('request');
 let User = require('../models/user');
 
 
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+
+var bodyParser = require('body-parser');
+
+// Map global promises
+
+mongoose.Promise = global.Promise;
+
+// Mongoose connect google
+
+var url =  'mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp';
+mongoose.connect('mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp', {
+    useMongoClient:true
+})
+
 var Twitter = require('twitter');
 
 const twitterKeys = require('../config/twitterKeys');
@@ -11,6 +28,8 @@ const twitterKeys = require('../config/twitterKeys');
    
 
 var twitterClient = new Twitter({
+    
+    
   consumer_key: twitterKeys.consumerKey,
   consumer_secret: twitterKeys.consumerSecret,
   access_token_key: twitterKeys.token,
@@ -43,19 +62,10 @@ request({
     
 })
    
-    
 
-	
 	
 });
 
-
-
-
-
-
-
-      
 
 
 router.post('/search', function(req, res) {
@@ -125,17 +135,36 @@ request({
     
 });
 
-
-router.get('/tweeta',  function(req, res) {
-
-twitterClient.post('statuses/update', {status: 'I am a tweet'}, function(error, tweet, response) {
+router.post('/tweeta',  function(req, res) {
+    
+   
+    
+mongo.connect(url, function(err, db) {
+  if (err) throw err;
+  db.collection("users").findOne({username: (req.body.username)}, function(err, result) {
+    if (err) throw err;
+      
+    console.log(result);
+  consumer_secret: twitterKeys.consumerSecret,
+  access_token_key: result.token,
+  access_token_secret: result.tokenSecret
+});
+      
+      
+  twitterClient.post('statuses/update', {status: (req.body.tweetText)}, function(error, tweet, response) {
   if (!error) {
     console.log(tweet);
       
-      res.render('index');
+        res.redirect('/');
   }
-});
 
+  });
+});
+    
+
+
+});
+    
 });
 
 module.exports = router;

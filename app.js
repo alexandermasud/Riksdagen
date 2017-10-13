@@ -57,6 +57,8 @@ app.engine('handlebars', exphbs({
 
 app.set('view engine', 'handlebars');
 
+
+
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -123,7 +125,7 @@ app.use(function(req, res, next) {
 
 app.get('/', routes);
 app.post('/search', search)
-app.get('/tweeta', tweeta);
+app.post('/tweeta', tweeta);
 
 
 app.get('/politicians', politicians)

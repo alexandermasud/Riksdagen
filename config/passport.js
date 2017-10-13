@@ -17,6 +17,8 @@ module.exports = function(passport){
       callbackURL:googleKeys.callbackURL,
       proxy: true
     }, (accessToken, refreshToken, profile, done) => {
+        
+        
     
 
       const image = profile.photos[0].value.substring(0, profile.photos[0].value.indexOf('?'));
@@ -87,7 +89,7 @@ module.exports = function(passport){
            
       
   }
-)); 
+));
     
     
     passport.use(new TwitterStrategy({
@@ -98,14 +100,18 @@ module.exports = function(passport){
   },
   function(token, tokenSecret, profile, done) {
         
-        
+     
+       
+         
         
        const newUser = {
         username: profile.id,
         firstname: profile.displayName,
         lastname: profile.username,
         email: profile.emails[0].value,
-        image: profile.photos[0].value
+        image: profile.photos[0].value,
+        token: token,
+        tokenSecret: tokenSecret
       }
 
       // Check for existing user

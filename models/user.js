@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Shema
-const GoogleUserSchema = new Schema({
+const ExternalUserSchema = new Schema({
   username:{
     type:String,
   },
@@ -19,59 +19,19 @@ const GoogleUserSchema = new Schema({
   },
   image: {
     type:String
-  }
-});
-
-// Create collection and add schema
-mongoose.model('users', GoogleUserSchema);
-
-// Create Shema
-const FacebookUserSchema = new Schema({
-  id:{
-    type:String,
-   
   },
-    token:{
-    type:String,
-   
-  },
-  email:{
-    type: String,
-    
-  },
-  firstname: {
-    type: String
-  },
-  lastname: {
-    type: String
-  }
-
-});
-
-// Create collection and add schema
-mongoose.model('facebookUsers', FacebookUserSchema);
-
-// Create Shema
-const TwitterUserSchema = new Schema({
-  username:{
-    type:String,
-  },
-   email:{
-    type:String,
-  },
-  firstname: {
-    type: String
-  },
-  lastname: {
-    type: String
-  },
-  image: {
+  token: {
     type:String
+  },
+  tokenSecret: {
+      type:String
   }
+  
 });
 
 // Create collection and add schema
-mongoose.model('twitterUsers', TwitterUserSchema);
+mongoose.model('users', ExternalUserSchema);
+
 
 
 
@@ -101,7 +61,8 @@ var UserSchema = mongoose.Schema({
 	},
 	email: {
 		type: String
-	},
+	}
+   
 });
 
 
