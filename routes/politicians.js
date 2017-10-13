@@ -145,6 +145,12 @@ mongo.connect(url, function(err, db) {
     if (err) throw err;
       
     console.log(result);
+    db.close();
+      
+      var twitterClient = new Twitter({
+    
+    
+  consumer_key: twitterKeys.consumerKey,
   consumer_secret: twitterKeys.consumerSecret,
   access_token_key: result.token,
   access_token_secret: result.tokenSecret
