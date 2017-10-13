@@ -6,7 +6,7 @@
         <div class="col-lg-2"></div>
     
    
-<p>ENPOLITIKER</p>
+
            
    {{#politiker}}
            
@@ -18,12 +18,11 @@
          
            
             <div class="card-image">
-              <img src="{{bild_url_80}}" alt="Porträtt på riksdagsledamoten {{tilltalsnamn}} {{efternamn}}">
+              <img src="{{bild_url_192}}" alt="Porträtt på riksdagsledamoten {{tilltalsnamn}} {{efternamn}}">
             </div>
             <span class="card-title"><h4>{{tilltalsnamn}} {{efternamn}}</h4></span>
             <div class="card-content">
               <p>{{valkrets}} {{parti}}</p>
-              <a href="/politician/{{intressent_id}}" class="btn btn-default" type="submit">Mer info</a>
             </div>
             
            
@@ -43,9 +42,11 @@
         
          <div class="card horizontal z-depth-3">
          
+            <div class="card-image">
+              <img src="{{user.profile_image_url}}" alt="Porträtt på riksdagsledamoten {{tilltalsnamn}} {{efternamn}}">
+            </div>
            
-           
-            
+             <span class="card-title"><p>{{user.name}}</p></span>
             <div class="card-content">
               <p> {{text}}</p>
               

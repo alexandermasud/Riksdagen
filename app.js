@@ -33,6 +33,8 @@ mongoose.connect('mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp', {
 
 var routes = require('./routes/index');
 
+var tweeta = require('./routes/politicians');
+
 
 var politicians = require('./routes/politicians')
 
@@ -121,6 +123,8 @@ app.use(function(req, res, next) {
 
 app.get('/', routes);
 app.post('/search', search)
+app.get('/tweeta', tweeta);
+
 
 app.get('/politicians', politicians)
 

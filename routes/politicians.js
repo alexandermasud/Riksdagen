@@ -6,11 +6,15 @@ let User = require('../models/user');
 
 var Twitter = require('twitter');
 
-var client = new Twitter({
-  consumer_key: '86VarYRKxkosjvIInJGt4DVsq',
-  consumer_secret: 'f9BBJlKmxPaBBv0wKDSkgypFLRPNVgbsINcWObmCaE0MZUcadE',
-  access_token_key: '893528727837188098-hiq38qi5OaW76wjAA1oNtLAKqLqUb4T',
-  access_token_secret: 'WkNo6oUrybHzPfBPHLwnqcXQR6E8ezzyIptqWH1kmlmQf'
+const twitterKeys = require('../config/twitterKeys');
+
+   
+
+var twitterClient = new Twitter({
+  consumer_key: twitterKeys.consumerKey,
+  consumer_secret: twitterKeys.consumerSecret,
+  access_token_key: twitterKeys.token,
+  access_token_secret: twitterKeys.tokenSecret
 });
 
 router.get('/politicians', function(req, res) {
@@ -40,19 +44,17 @@ request({
 })
    
     
-  
-    
+
 	
 	
 });
 
 
 
-        //console.log(body.personlista.person.fodd_ar)
-        //console.log(body.personlista.person.tilltalsnamn)
-        //console.log(body.personlista.person.parti)
-        //console.log(body.personlista.person.valkrets)
-        //console.log(body.personlista.person.bild_url_192)
+
+
+
+
       
 
 
@@ -77,8 +79,7 @@ request({
         
      res.render('politicians', {politiker});
         
-  
-        
+ 
     }
     
 })
@@ -107,8 +108,9 @@ request({
     var politiker = body.personlista.person;
 
         
-           client.get('search/tweets', {q: ((tilltalsnamn) + ' ' + (efternamn))}, function(error, tweets, response) {
+           twitterClient.get('search/tweets', {q: ((tilltalsnamn) + ' ' + (efternamn))}, function(error, tweets, response) {
            var tweets = (tweets.statuses);
+            console.log(tweets)
                
                
                
@@ -116,9 +118,7 @@ request({
             res.render('politician', {politiker, tweets});
                
         });
-        
-    
-       
+
     }
     
 })
@@ -126,8 +126,17 @@ request({
 });
 
 
+router.get('/tweeta',  function(req, res) {
 
+twitterClient.post('statuses/update', {status: 'I am a tweet'}, function(error, tweet, response) {
+  if (!error) {
+    console.log(tweet);
+      
+      res.render('index');
+  }
+});
 
+});
 
 module.exports = router;
 
