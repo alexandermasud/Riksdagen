@@ -22,8 +22,7 @@ mongoose.Promise = global.Promise;
 
 // Mongoose connect google
 
-
-mongoose.connect('mongodb://alex:alex@ds163494.mlab.com:63494/twitterapp', {
+mongoose.connect('mongodb://alex:alex@ds211588.mlab.com:11588/riksdagen', {
     useMongoClient:true
 })
 
